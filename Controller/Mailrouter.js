@@ -3,7 +3,7 @@ const nodemailer = require('nodemailer');
 
 
 mailrouter.post('/', (req, res) => {
-    const { email, name, subject, message } = req.body;
+    const { email, name, Subject, message } = req.body;
 
     const transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -12,15 +12,15 @@ mailrouter.post('/', (req, res) => {
             pass: 'yglubdayulcahfhr'
         }
     });
-    const html = `<p>Hi,I am ${name}</p>
+    const html = `<p>Mail from ${email}</p>
+    <p>Hi,I am ${name}</p>
     <p>${message}</p>
-    
     `
 
     const mailoption = {
         from:{email},
         to: "billanivash52@gmail.com",
-        subject: {subject},
+        subject: {Subject},
         html:html
     }
 
